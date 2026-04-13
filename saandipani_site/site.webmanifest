@@ -3,8 +3,8 @@
   "short_name": "Saandipani",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#f8f3ea",
-  "theme_color": "#0c2a63",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
   "icons": [
     {
       "src": "/assets/img/icon-192.png",

@@ -1,51 +1,72 @@
-# Saandipani premium white-theme website architecture
+# Saandipani International Schools — Website Architecture
 
-This package is a static, multi-page website prepared for Netlify deployment.
+## Public website footprint
+- 26 public pages
+- 1 thank-you page
+- 1 custom 404 page
 
-## Design direction
+## Deep path
+A five-level-deep path is retained:
 
-- Premium white theme with color accents
-- Thin-stem Saandipani logo across the site shell and social image
-- Soft embossed ring language inspired by the business card
-- Navy, teal, coral, gold, and violet accent logic inspired by the brochure palette
-- Higher-end, editorial spacing and premium card surfaces
-- Force-directed relationship maps embedded into page journeys
-- Search-first discovery layer with command-style site search
-- Floating enquiry + search dock for conversion support
+`/montessori/foundations/prepared-environment/classroom-flow/parent-guide/`
 
-## Information architecture
+## Core sections
+- Home
+- About
+  - Vision
+  - Leadership
+  - Governance
+- Montessori
+  - Why Montessori
+  - Foundations
+    - Practical Life
+    - Prepared Environment
+      - Classroom Flow
+        - Parent Guide
+- Programs
+  - Foundational Years
+    - Ages 3 to 6
+- Admissions
+  - How to Apply
+  - Enquiry
+- Campus
+  - Poranki
+- Families
+  - FAQ
+- Journal
+  - Montessori at Home
+- Contact
+- Sitemap
 
-- Multi-page public website
-- No orphan public pages
-- Five-layer-deep path retained:
-  `/montessori/foundations/prepared-environment/classroom-flow/parent-guide/`
-- Repeated contextual linking through:
-  1. Global navigation
-  2. Sticky section navigation
-  3. Breadcrumbs
-  4. Related cards
-  5. CTA bands
-  6. Footer links
-  7. HTML sitemap
-  8. Force-directed exploration cards
-  9. Global site search
+## Professional UX features
+- white-theme premium visual system
+- refined editorial typography
+- redesigned cards with multiple card styles
+- force-map exploration component on key landing pages
+- animated value ticker
+- search overlay with `/` shortcut
+- floating enquire + search dock
+- dismissible navigation tip
+- custom tooltips on navigation and key actions
+- non-regular visual frames for campus, classroom, materials, portrait, and community imagery
+- Netlify-ready form handling
 
-## Premium interaction features
+## Contact routes included
+- info@saandipanischools.com
+- admissions@saandipanischools.com
+- grievance@saandipanischools.com
+- govt.authorities.contact@saandipanischools.com
+- Admissions desk: +91 8888 438 999
 
-- White, glassy sticky header
-- Section-specific accent system
-- Search overlay with keyboard shortcut support
-- Force-directed exploration card on content pages
-- Scroll progress indicator
-- Floating dock for enquiry and search
-- Animated reveal states for premium motion without heavy libraries
+## Linking strategy
+Every public page is linked from:
+- primary navigation and/or footer navigation
+- related-section cards
+- section rails for parent/child pages
+- the HTML sitemap
+- contextual body links on nearby section pages
 
-## Content strategy
-
-The site keeps the Montessori story, parent reassurance, admissions pathway, and Poranki location narrative tightly connected so different parent mindsets can move through the school story in different ways without losing context.
-
-## Deployment
-
-- Static HTML/CSS/JS build
-- Netlify forms preserved on the admissions enquiry page
-- XML sitemap, HTML sitemap, robots, manifest, favicon, and social image included
+The audit confirms:
+- 0 orphan public pages
+- every public page has at least 5 inbound links
+- every public page has at least 3 unique source pages linking to it

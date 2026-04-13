@@ -1,30 +1,33 @@
-# Premium white-theme refresh notes
+# Theme refresh notes
 
 ## What changed
+This version intentionally departs from the earlier site direction and uses a cleaner premium white theme.
 
-- Shifted the site away from darker, repeated gradient-heavy treatments
-- Rebuilt the visual system around white surfaces, embossed ring language, and section-based accent colors
-- Replaced the old logo files with the thin-stem Saandipani logo
-- Added a command-style site search layer
-- Added force-directed journey cards to page hero panels
-- Added a floating enquiry + search dock
-- Added scroll progress and motion polish
-- Cleaned several public-facing copy blocks so the site reads more like a school brand and less like an internal prototype
+## Visual principles
+- soft white and pearl surfaces
+- navy editorial typography
+- Montessori accent palette: teal, coral, gold, violet, and soft sage
+- lighter, more elegant spacing
+- less repetition in card styling
+- cleaner, more corporate information hierarchy
 
-## Best pages to review first
+## New component direction
+- signature cards with accent edge
+- related-link cards with numbered indices
+- split panels for narrative content
+- contact-directory cards
+- irregular image frames for future campus and classroom photography
+- animated force-map component for high-level exploration
+- floating dock and navigation tip layer
 
-- `/`
-- `/montessori/`
-- `/admissions/enquiry/`
-- `/montessori/foundations/prepared-environment/classroom-flow/parent-guide/`
-- `/sitemap/`
+## Content approach
+- removed internal/prototype-style messaging
+- shifted to public-facing school language
+- kept content depth while spreading information more evenly across pages
+- maintained clear calls to admissions, programs, Montessori, campus, families, and contact
 
-## Theme intent
-
-The site is designed to feel:
-
-- premium and white-space led
-- Montessori-aligned without looking generic
-- vibrant through controlled accents rather than heavy backgrounds
-- conversion-focused without becoming salesy
-- feature-rich but still static and Netlify-friendly
+## Deployment
+The package is static HTML/CSS/JS and is ready for direct deployment to Netlify.
+Forms are prepared with Netlify form attributes for:
+- admissions-enquiry
+- general-contact

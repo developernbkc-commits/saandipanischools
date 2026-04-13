@@ -2,211 +2,414 @@
   {
     "title": "Home",
     "heading": "Beautiful learning. Calm beginnings. Strong futures.",
-    "description": "Saandipani International Schools is a Montessori-led school vision for Poranki, Vijayawada, designed around calm classrooms, strong foundations, and vibrant futures.",
     "url": "/",
     "section": "home",
+    "description": "Saandipani International Schools is envisioned as a premium Montessori-led day school in Poranki, Vijayawada, where children begin with calm routines, purposeful discovery, and a strong sense of independence.",
     "keywords": [
-      "Rooted in Montessori wisdom"
+      "Montessori school Poranki",
+      "Saandipani",
+      "Vijayawada school",
+      "Admissions",
+      "Campus",
+      "Parent partnership",
+      "8888 438 999",
+      "admissions@saandipanischools.com",
+      "info@saandipanischools.com"
     ]
   },
   {
     "title": "About Saandipani",
     "heading": "About Saandipani",
-    "description": "Learn about the founding vision, promise, leadership, and governance approach behind Saandipani International Schools.",
     "url": "/about/",
     "section": "about",
-    "keywords": []
+    "description": "Saandipani International Schools is being shaped as a calm, premium learning community for children and families who value depth, independence, and warm school culture.",
+    "keywords": [
+      "About Saandipani",
+      "vision",
+      "leadership",
+      "governance",
+      "8888 438 999",
+      "admissions@saandipanischools.com",
+      "info@saandipanischools.com"
+    ]
   },
   {
-    "title": "The Montessori Journey",
-    "heading": "The Montessori Journey",
-    "description": "Explore how Saandipani International Schools is building a complete Maria Montessori-led educational experience.",
-    "url": "/montessori/",
-    "section": "montessori",
-    "keywords": []
-  },
-  {
-    "title": "Programs",
-    "heading": "Programs",
-    "description": "Explore Saandipani\u2019s Montessori-led program structure, especially the foundational years.",
-    "url": "/programs/",
-    "section": "programs",
-    "keywords": []
-  },
-  {
-    "title": "Admissions",
-    "heading": "Admissions",
-    "description": "Explore admissions, enquiry options, and parent guidance for Saandipani International Schools.",
-    "url": "/admissions/",
-    "section": "admissions",
-    "keywords": []
-  },
-  {
-    "title": "Campus",
-    "heading": "Campus",
-    "description": "Explore the campus vision and Poranki location story for Saandipani International Schools.",
-    "url": "/campus/",
-    "section": "campus",
-    "keywords": []
-  },
-  {
-    "title": "Parents & Families",
-    "heading": "Parents & Families",
-    "description": "Explore how Saandipani partners with parents and supports families through clear communication and guidance.",
-    "url": "/families/",
-    "section": "families",
-    "keywords": []
-  },
-  {
-    "title": "Journal",
-    "heading": "Journal",
-    "description": "Read family-friendly Montessori articles and school insights from Saandipani.",
-    "url": "/journal/",
-    "section": "journal",
-    "keywords": []
-  },
-  {
-    "title": "Contact Saandipani",
-    "heading": "Contact Saandipani",
-    "description": "Contact Saandipani International Schools in Poranki, Vijayawada.",
-    "url": "/contact/",
-    "section": "contact",
-    "keywords": []
-  },
-  {
-    "title": "Site Map",
-    "heading": "Site Map",
-    "description": "Browse the Saandipani site map and connected journey structure.",
-    "url": "/sitemap/",
-    "section": "sitemap",
-    "keywords": []
-  },
-  {
-    "title": "Montessori at Home",
-    "heading": "Montessori at Home",
-    "description": "Practical Montessori at home ideas for families exploring Saandipani International Schools.",
-    "url": "/journal/montessori-at-home/",
-    "section": "journal",
-    "keywords": []
-  },
-  {
-    "title": "Family FAQ",
-    "heading": "Family FAQ",
-    "description": "Frequently asked questions for parents considering Saandipani International Schools.",
-    "url": "/families/faq/",
-    "section": "families",
-    "keywords": []
-  },
-  {
-    "title": "Poranki Campus Story",
-    "heading": "Poranki Campus Story",
-    "description": "Learn about Saandipani\u2019s Poranki, Vijayawada location and why it matters for families.",
-    "url": "/campus/poranki/",
-    "section": "campus",
-    "keywords": []
-  },
-  {
-    "title": "How to Apply",
-    "heading": "How to Apply",
-    "description": "See the admissions pathway for Saandipani International Schools, from enquiry to onboarding.",
-    "url": "/admissions/how-to-apply/",
-    "section": "admissions",
-    "keywords": []
-  },
-  {
-    "title": "Admissions Enquiry",
-    "heading": "Admissions Enquiry",
-    "description": "Submit an admissions enquiry to Saandipani International Schools.",
-    "url": "/admissions/enquiry/",
-    "section": "admissions",
-    "keywords": []
-  },
-  {
-    "title": "Foundational Years",
-    "heading": "Foundational Years",
-    "description": "Discover the Saandipani foundational years program and how Montessori shapes the early learning experience.",
-    "url": "/programs/foundational-years/",
-    "section": "programs",
-    "keywords": []
-  },
-  {
-    "title": "Ages 3 to 6 Program",
-    "heading": "Ages 3 to 6 Program",
-    "description": "Learn about the Saandipani ages 3 to 6 Montessori program in Poranki, Vijayawada.",
-    "url": "/programs/foundational-years/ages-3-6/",
-    "section": "programs",
-    "keywords": []
-  },
-  {
-    "title": "Why Montessori",
-    "heading": "Why Montessori",
-    "description": "Understand the parent-facing benefits of Montessori education at Saandipani.",
-    "url": "/montessori/why-montessori/",
-    "section": "montessori",
-    "keywords": []
-  },
-  {
-    "title": "The Four Foundations",
-    "heading": "The Four Foundations",
-    "description": "Explore Saandipani\u2019s four developmental foundations: independence, discovery, expression, and character.",
-    "url": "/montessori/foundations/",
-    "section": "montessori",
-    "keywords": []
-  },
-  {
-    "title": "Practical Life & Independence",
-    "heading": "Practical Life & Independence",
-    "description": "Discover how practical life activities build independence and confidence in Montessori classrooms at Saandipani.",
-    "url": "/montessori/foundations/practical-life/",
-    "section": "montessori",
-    "keywords": []
-  },
-  {
-    "title": "Prepared Environment",
-    "heading": "Prepared Environment",
-    "description": "Learn how the prepared environment supports independence, order, and concentration in Saandipani\u2019s Montessori classrooms.",
-    "url": "/montessori/foundations/prepared-environment/",
-    "section": "montessori",
-    "keywords": []
-  },
-  {
-    "title": "Classroom Flow",
-    "heading": "Classroom Flow",
-    "description": "See how Saandipani\u2019s Montessori classroom flow supports calm, focus, movement, and independence.",
-    "url": "/montessori/foundations/prepared-environment/classroom-flow/",
-    "section": "montessori",
-    "keywords": []
-  },
-  {
-    "title": "Parent Guide to a Montessori Day",
-    "heading": "Parent Guide to a Montessori Day",
-    "description": "A parent guide to what a Montessori day feels like at Saandipani, from arrival to reflection.",
-    "url": "/montessori/foundations/prepared-environment/classroom-flow/parent-guide/",
-    "section": "montessori",
-    "keywords": []
-  },
-  {
-    "title": "Vision & Promise",
-    "heading": "Vision & Promise",
-    "description": "Explore the vision, values, and family promise of Saandipani International Schools.",
+    "title": "Vision",
+    "heading": "Vision",
     "url": "/about/vision/",
     "section": "about",
-    "keywords": []
+    "description": "Saandipani\u2019s vision is built around prepared environments, joyful independence, and the belief that strong foundations begin with respect for childhood.",
+    "keywords": [
+      "school vision",
+      "calm classrooms",
+      "foundational years",
+      "8888 438 999",
+      "admissions@saandipanischools.com",
+      "info@saandipanischools.com"
+    ]
   },
   {
     "title": "Leadership",
     "heading": "Leadership",
-    "description": "Meet the leadership voice behind Saandipani International Schools and the school\u2019s stewardship philosophy.",
     "url": "/about/leadership/",
     "section": "about",
-    "keywords": []
+    "description": "Leadership at Saandipani is intended to feel visible, grounded, and reassuring. Families should know who is shaping the school and how to reach the right people.",
+    "keywords": [
+      "leadership",
+      "P. Sasikala",
+      "admissions desk",
+      "school communication",
+      "8888 438 999",
+      "admissions@saandipanischools.com",
+      "info@saandipanischools.com"
+    ]
   },
   {
-    "title": "Governance & Trust",
-    "heading": "Governance & Trust",
-    "description": "Understand Saandipani\u2019s purpose-led governance approach and commitment to trust, reinvestment, and disciplined institution building.",
+    "title": "Governance",
+    "heading": "Governance",
     "url": "/about/governance/",
     "section": "about",
-    "keywords": []
+    "description": "The governance story is presented in a public-facing way: transparency, responsible communication, parent trust, and clear pathways for feedback and formal contact.",
+    "keywords": [
+      "governance",
+      "grievance",
+      "authority contact",
+      "transparency",
+      "8888 438 999",
+      "admissions@saandipanischools.com",
+      "info@saandipanischools.com"
+    ]
+  },
+  {
+    "title": "The Montessori Journey",
+    "heading": "The Montessori Journey",
+    "url": "/montessori/",
+    "section": "montessori",
+    "description": "The Montessori section translates philosophy into everyday school life\u2014materials, movement, routines, independence, and the prepared environment.",
+    "keywords": [
+      "Montessori",
+      "Maria Montessori",
+      "prepared environment",
+      "practical life",
+      "classroom flow",
+      "8888 438 999",
+      "admissions@saandipanischools.com",
+      "info@saandipanischools.com"
+    ]
+  },
+  {
+    "title": "Why Montessori",
+    "heading": "Why Montessori",
+    "url": "/montessori/why-montessori/",
+    "section": "montessori",
+    "description": "Many families are drawn to Montessori because it respects the pace of childhood while building concentration, independence, and joyful confidence from the earliest years.",
+    "keywords": [
+      "why Montessori",
+      "independence",
+      "concentration",
+      "confidence",
+      "8888 438 999",
+      "admissions@saandipanischools.com",
+      "info@saandipanischools.com"
+    ]
+  },
+  {
+    "title": "Montessori Foundations",
+    "heading": "Montessori Foundations",
+    "url": "/montessori/foundations/",
+    "section": "montessori",
+    "description": "The Montessori foundations gather the developmental pillars parents care about most and show how they work together rather than in isolation.",
+    "keywords": [
+      "Montessori foundations",
+      "independence",
+      "discovery",
+      "expression",
+      "character",
+      "8888 438 999",
+      "admissions@saandipanischools.com",
+      "info@saandipanischools.com"
+    ]
+  },
+  {
+    "title": "Practical Life",
+    "heading": "Practical Life",
+    "url": "/montessori/foundations/practical-life/",
+    "section": "montessori",
+    "description": "Practical life helps children become capable, orderly, and quietly confident in themselves and in the world around them.",
+    "keywords": [
+      "practical life",
+      "self care",
+      "care of environment",
+      "grace and courtesy",
+      "8888 438 999",
+      "admissions@saandipanischools.com",
+      "info@saandipanischools.com"
+    ]
+  },
+  {
+    "title": "Prepared Environment",
+    "heading": "Prepared Environment",
+    "url": "/montessori/foundations/prepared-environment/",
+    "section": "montessori",
+    "description": "The prepared environment helps children know where things belong, what they can access, and how to move through the classroom with confidence and calm.",
+    "keywords": [
+      "prepared environment",
+      "beauty and order",
+      "classroom design",
+      "8888 438 999",
+      "admissions@saandipanischools.com",
+      "info@saandipanischools.com"
+    ]
+  },
+  {
+    "title": "Classroom Flow",
+    "heading": "Classroom Flow",
+    "url": "/montessori/foundations/prepared-environment/classroom-flow/",
+    "section": "montessori",
+    "description": "A calm school day has rhythm: arrival, settling, work cycles, movement, conversation, and a sense of graceful continuity.",
+    "keywords": [
+      "classroom flow",
+      "work cycle",
+      "daily rhythm",
+      "Montessori day",
+      "8888 438 999",
+      "admissions@saandipanischools.com",
+      "info@saandipanischools.com"
+    ]
+  },
+  {
+    "title": "Parent Guide",
+    "heading": "Parent Guide",
+    "url": "/montessori/foundations/prepared-environment/classroom-flow/parent-guide/",
+    "section": "montessori",
+    "description": "Families can support independence and confidence at home through calm routines, patient observation, and simple opportunities for participation.",
+    "keywords": [
+      "parent guide",
+      "Montessori at home",
+      "home routines",
+      "independence at home",
+      "8888 438 999",
+      "admissions@saandipanischools.com",
+      "info@saandipanischools.com"
+    ]
+  },
+  {
+    "title": "Programs",
+    "heading": "Programs",
+    "url": "/programs/",
+    "section": "programs",
+    "description": "The Programs section keeps the academic story elegant: clear age pathways, strong outcomes, and a design language that feels premium but approachable.",
+    "keywords": [
+      "programs",
+      "foundational years",
+      "ages 3 to 6",
+      "8888 438 999",
+      "admissions@saandipanischools.com",
+      "info@saandipanischools.com"
+    ]
+  },
+  {
+    "title": "Foundational Years",
+    "heading": "Foundational Years",
+    "url": "/programs/foundational-years/",
+    "section": "programs",
+    "description": "The Foundational Years are where Saandipani\u2019s Montessori identity becomes most visible and most meaningful for children and families.",
+    "keywords": [
+      "foundational years",
+      "early years",
+      "Montessori preschool",
+      "ages 3 to 6",
+      "8888 438 999",
+      "admissions@saandipanischools.com",
+      "info@saandipanischools.com"
+    ]
+  },
+  {
+    "title": "Ages 3 to 6",
+    "heading": "Ages 3 to 6",
+    "url": "/programs/foundational-years/ages-3-6/",
+    "section": "programs",
+    "description": "A parent-friendly picture of what children aged 3 to 6 may experience in a complete Montessori beginning.",
+    "keywords": [
+      "ages 3 to 6",
+      "foundational program",
+      "early childhood",
+      "8888 438 999",
+      "admissions@saandipanischools.com",
+      "info@saandipanischools.com"
+    ]
+  },
+  {
+    "title": "Admissions",
+    "heading": "Admissions",
+    "url": "/admissions/",
+    "section": "admissions",
+    "description": "The admissions journey is intended to feel polished, respectful, and reassuring\u2014clear enough for families to act, gentle enough for them to explore at their own pace.",
+    "keywords": [
+      "admissions",
+      "how to apply",
+      "enquiry",
+      "admissions phone",
+      "8888 438 999",
+      "8888 438 999",
+      "admissions@saandipanischools.com",
+      "info@saandipanischools.com"
+    ]
+  },
+  {
+    "title": "How to Apply",
+    "heading": "How to Apply",
+    "url": "/admissions/how-to-apply/",
+    "section": "admissions",
+    "description": "A straightforward admissions pathway helps families understand what happens from first enquiry to the next conversation.",
+    "keywords": [
+      "how to apply",
+      "admissions steps",
+      "enquiry form",
+      "8888 438 999",
+      "admissions@saandipanischools.com",
+      "info@saandipanischools.com"
+    ]
+  },
+  {
+    "title": "Enquiry",
+    "heading": "Enquiry",
+    "url": "/admissions/enquiry/",
+    "section": "admissions",
+    "description": "Families can register their interest through a clean admissions form, connect by phone, or write directly to the relevant department email address.",
+    "keywords": [
+      "enquiry",
+      "Netlify form",
+      "admissions email",
+      "admissions desk",
+      "8888 438 999",
+      "admissions@saandipanischools.com",
+      "info@saandipanischools.com"
+    ]
+  },
+  {
+    "title": "Campus",
+    "heading": "Campus",
+    "url": "/campus/",
+    "section": "campus",
+    "description": "The campus story combines location confidence, thoughtful environment design, and a sense of modern, family-friendly access.",
+    "keywords": [
+      "campus",
+      "Poranki campus",
+      "school location",
+      "8888 438 999",
+      "admissions@saandipanischools.com",
+      "info@saandipanischools.com"
+    ]
+  },
+  {
+    "title": "Poranki, Vijayawada",
+    "heading": "Poranki, Vijayawada",
+    "url": "/campus/poranki/",
+    "section": "campus",
+    "description": "Poranki gives the school a location story parents can understand immediately: connected, visible, and close to the rhythms of daily family life in the Vijayawada region.",
+    "keywords": [
+      "Poranki",
+      "Vijayawada",
+      "campus location",
+      "school accessibility",
+      "8888 438 999",
+      "admissions@saandipanischools.com",
+      "info@saandipanischools.com"
+    ]
+  },
+  {
+    "title": "Families",
+    "heading": "Families",
+    "url": "/families/",
+    "section": "families",
+    "description": "A strong school-home relationship begins with communication that is clear, warm, and genuinely useful.",
+    "keywords": [
+      "families",
+      "parent partnership",
+      "school home connection",
+      "8888 438 999",
+      "admissions@saandipanischools.com",
+      "info@saandipanischools.com"
+    ]
+  },
+  {
+    "title": "Frequently Asked Questions",
+    "heading": "Frequently Asked Questions",
+    "url": "/families/faq/",
+    "section": "families",
+    "description": "Helpful answers to common questions about Montessori, programs, admissions, communication, and day-to-day family experience.",
+    "keywords": [
+      "FAQ",
+      "questions",
+      "Montessori FAQ",
+      "admissions FAQ",
+      "8888 438 999",
+      "admissions@saandipanischools.com",
+      "info@saandipanischools.com"
+    ]
+  },
+  {
+    "title": "Journal",
+    "heading": "Journal",
+    "url": "/journal/",
+    "section": "journal",
+    "description": "The journal extends the school\u2019s voice through calm, helpful writing for parents and families.",
+    "keywords": [
+      "journal",
+      "articles",
+      "Montessori at home",
+      "8888 438 999",
+      "admissions@saandipanischools.com",
+      "info@saandipanischools.com"
+    ]
+  },
+  {
+    "title": "Montessori at Home",
+    "heading": "Montessori at Home",
+    "url": "/journal/montessori-at-home/",
+    "section": "journal",
+    "description": "A calm, realistic guide to supporting independence and order at home without turning home into a classroom.",
+    "keywords": [
+      "Montessori at home",
+      "home routines",
+      "practical Montessori",
+      "8888 438 999",
+      "admissions@saandipanischools.com",
+      "info@saandipanischools.com"
+    ]
+  },
+  {
+    "title": "Contact",
+    "heading": "Contact",
+    "url": "/contact/",
+    "section": "contact",
+    "description": "A professional contact directory with dedicated channels for information, admissions, grievances, and formal external communication.",
+    "keywords": [
+      "contact",
+      "info email",
+      "admissions email",
+      "grievance",
+      "government authorities contact",
+      "8888 438 999",
+      "8888 438 999",
+      "admissions@saandipanischools.com",
+      "info@saandipanischools.com"
+    ]
+  },
+  {
+    "title": "Sitemap",
+    "heading": "Sitemap",
+    "url": "/sitemap/",
+    "section": "sitemap",
+    "description": "Find every major area of Saandipani International Schools from one clear, well-organised directory.",
+    "keywords": [
+      "sitemap",
+      "site map",
+      "navigation",
+      "8888 438 999",
+      "admissions@saandipanischools.com",
+      "info@saandipanischools.com"
+    ]
   }
 ]

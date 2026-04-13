@@ -1,31 +1,22 @@
-const DEFAULT_PAGES = [
-  { title: 'Home', url: '/', section: 'home', description: 'Main brand entry point' },
-  { title: 'About', url: '/about/', section: 'about', description: 'Vision, leadership, and governance' },
-  { title: 'Montessori', url: '/montessori/', section: 'montessori', description: 'Maria Montessori at the core' },
-  { title: 'Programs', url: '/programs/', section: 'programs', description: 'Program pathways and age fit' },
-  { title: 'Admissions', url: '/admissions/', section: 'admissions', description: 'Admissions journey' },
-  { title: 'Campus', url: '/campus/', section: 'campus', description: 'Poranki, Vijayawada story' },
-  { title: 'Families', url: '/families/', section: 'families', description: 'School-home partnership' },
-  { title: 'Journal', url: '/journal/', section: 'journal', description: 'Articles and Montessori guidance' },
-  { title: 'Contact', url: '/contact/', section: 'contact', description: 'Phone, email, and enquiry routes' },
-  { title: 'Sitemap', url: '/sitemap/', section: 'sitemap', description: 'Complete site map' }
-];
 
 const SECTION_COLORS = {
-  home: '#0fb5ae',
-  about: '#d8ab34',
-  montessori: '#0fb5ae',
-  programs: '#ff8f70',
-  admissions: '#ff8f70',
-  campus: '#0fb5ae',
-  families: '#6b6ce4',
-  journal: '#d8ab34',
+  home: '#11b8b1',
+  about: '#d9ab39',
+  montessori: '#11b8b1',
+  programs: '#f68a72',
+  admissions: '#f68a72',
+  campus: '#11b8b1',
+  families: '#7a70f2',
+  journal: '#d9ab39',
   contact: '#0c2346',
-  sitemap: '#6b6ce4',
+  sitemap: '#7a70f2',
   misc: '#0c2346'
 };
 
-let SEARCH_INDEX = DEFAULT_PAGES;
+let SEARCH_INDEX = [];
+const FALLBACK_SEARCH = [
+  { title: 'Home', heading: 'Saandipani International Schools', url: '/', section: 'home', description: 'Complete Maria Montessori concept school in Poranki, Vijayawada.' }
+];
 
 function normalizeInternalHref(href) {
   if (!href) return null;
@@ -33,9 +24,9 @@ function normalizeInternalHref(href) {
   try {
     const url = new URL(href, window.location.origin);
     if (url.origin !== window.location.origin) return null;
-    let path = url.pathname;
-    if (!path.endsWith('/') && !path.endsWith('.html')) path += '/';
-    return path;
+    let pathname = url.pathname;
+    if (!pathname.endsWith('/') && !pathname.endsWith('.html')) pathname += '/';
+    return pathname || '/';
   } catch {
     return null;
   }
@@ -45,16 +36,25 @@ function currentPath() {
   return normalizeInternalHref(window.location.pathname) || '/';
 }
 
-function setBodyRouteData() {
+function setRouteData() {
   const path = currentPath();
   const parts = path.split('/').filter(Boolean);
-  const section = parts[0] || 'home';
-  document.body.dataset.section = section;
+  document.body.dataset.section = parts[0] || document.body.dataset.section || 'home';
   document.body.dataset.depth = String(parts.length);
 }
 
+function setActiveNav() {
+  const path = currentPath();
+  document.querySelectorAll('a[href^="/"]').forEach(link => {
+    const href = normalizeInternalHref(link.getAttribute('href'));
+    if (!href) return;
+    const active = href === path || (href !== '/' && path.startsWith(href) && href.split('/').filter(Boolean).length === 1);
+    if (active) link.classList.add('active');
+  });
+}
+
 function initMenu() {
-  const header = document.querySelector('header.site-header');
+  const header = document.querySelector('.site-header');
   const button = document.querySelector('[data-menu-button]');
   if (!header || !button) return;
   button.addEventListener('click', () => {
@@ -64,18 +64,18 @@ function initMenu() {
   });
 }
 
-function initScrollStates() {
-  const header = document.querySelector('header.site-header');
+function initScrollProgress() {
   let progress = document.querySelector('.scroll-progress');
   if (!progress) {
     progress = document.createElement('div');
     progress.className = 'scroll-progress';
     document.body.appendChild(progress);
   }
+  const header = document.querySelector('.site-header');
   const update = () => {
-    const total = document.documentElement.scrollHeight - window.innerHeight;
-    const pct = total > 0 ? Math.min(100, Math.max(0, (window.scrollY / total) * 100)) : 0;
-    progress.style.width = `${pct}%`;
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = max > 0 ? Math.min(100, Math.max(0, (window.scrollY / max) * 100)) : 0;
+    progress.style.width = pct + '%';
     if (header) header.classList.toggle('scrolled', window.scrollY > 8);
   };
   update();
@@ -83,53 +83,38 @@ function initScrollStates() {
   window.addEventListener('resize', update);
 }
 
-function initFaq() {
-  document.querySelectorAll('.faq-item button').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const item = btn.closest('.faq-item');
-      const open = item.classList.contains('open');
-      item.classList.toggle('open', !open);
-      btn.setAttribute('aria-expanded', !open ? 'true' : 'false');
-      const mark = btn.querySelector('span:last-child');
-      if (mark) mark.textContent = !open ? '+' : '+';
-    });
-  });
-}
-
 async function loadSearchIndex() {
   try {
     const response = await fetch('/assets/data/search-index.json');
     if (!response.ok) throw new Error('Search index unavailable');
     const data = await response.json();
-    if (Array.isArray(data) && data.length) SEARCH_INDEX = data;
-  } catch {
-    SEARCH_INDEX = DEFAULT_PAGES;
-  }
+    if (Array.isArray(data) && data.length) {
+      SEARCH_INDEX = data;
+      return;
+    }
+  } catch {}
+  SEARCH_INDEX = FALLBACK_SEARCH;
 }
 
-function injectSearchButtons(openSearch) {
-  const desktopNav = document.querySelector('.desktop-nav');
-  const mobileDrawer = document.querySelector('.mobile-drawer');
-  const createButton = (mobile = false) => {
-    const btn = document.createElement(mobile ? 'button' : 'button');
-    btn.type = 'button';
-    btn.className = 'nav-search';
-    btn.innerHTML = mobile
-      ? '<span>Search the site</span><span class="search-kbd">⌘K</span>'
-      : '<span>Search</span><span class="search-kbd">⌘K</span>';
-    btn.addEventListener('click', openSearch);
-    return btn;
-  };
-
-  if (desktopNav && !desktopNav.querySelector('.nav-search')) {
-    const btn = createButton(false);
-    const cta = desktopNav.querySelector('.cta-nav');
-    if (cta) desktopNav.insertBefore(btn, cta);
-    else desktopNav.appendChild(btn);
+function scoreEntry(entry, query) {
+  if (!query) return 1;
+  const q = query.toLowerCase().trim();
+  if (!q) return 1;
+  const hay = [entry.title, entry.heading, entry.description, entry.section, ...(entry.keywords || [])].join(' ').toLowerCase();
+  if (!hay.includes(q)) {
+    const tokens = q.split(/\s+/).filter(Boolean);
+    if (!tokens.every(token => hay.includes(token))) return 0;
   }
-  if (mobileDrawer && !mobileDrawer.querySelector('.nav-search')) {
-    mobileDrawer.appendChild(createButton(true));
-  }
+  let score = 0;
+  if ((entry.title || '').toLowerCase().includes(q)) score += 8;
+  if ((entry.heading || '').toLowerCase().includes(q)) score += 6;
+  if ((entry.description || '').toLowerCase().includes(q)) score += 3;
+  if ((entry.section || '').toLowerCase().includes(q)) score += 2;
+  q.split(/\s+/).filter(Boolean).forEach(token => {
+    if (hay.includes(token)) score += 1;
+  });
+  if (entry.url === currentPath()) score -= 1;
+  return score;
 }
 
 function buildSearchModal() {
@@ -138,17 +123,17 @@ function buildSearchModal() {
   modal.setAttribute('aria-hidden', 'true');
   modal.innerHTML = `
     <button class="search-backdrop" aria-label="Close search"></button>
-    <div class="search-dialog" role="dialog" aria-modal="true" aria-label="Search the Saandipani website">
+    <div class="search-dialog" role="dialog" aria-modal="true" aria-label="Search Saandipani International Schools">
       <div class="search-head">
-        <div class="search-title">
-          <strong>Search the Saandipani website</strong>
-          <span>Fast access to Montessori, admissions, campus, family guidance, and deep pages.</span>
+        <div>
+          <strong>Search Saandipani International Schools</strong>
+          <span>Find Montessori, programs, admissions, campus guidance, and contact routes in seconds.</span>
         </div>
         <button class="search-close" type="button" aria-label="Close search">×</button>
       </div>
       <div class="search-box">
         <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"></circle><path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg>
-        <input type="text" placeholder="Search Montessori, admissions, family FAQ, Poranki campus…" aria-label="Search site">
+        <input type="text" placeholder="Search Montessori, admissions, families, campus…" aria-label="Search the school website">
         <div class="search-shortcuts">Press Esc to close</div>
       </div>
       <div class="search-results"></div>
@@ -158,345 +143,140 @@ function buildSearchModal() {
   return modal;
 }
 
-function scoreEntry(entry, query) {
-  if (!query) return 1;
-  const haystack = [entry.title, entry.heading, entry.description, entry.section, ...(entry.keywords || [])]
-    .join(' ')
-    .toLowerCase();
-  const q = query.toLowerCase().trim();
-  if (!haystack.includes(q)) return 0;
-  let score = 1;
-  if ((entry.title || '').toLowerCase().includes(q)) score += 6;
-  if ((entry.heading || '').toLowerCase().includes(q)) score += 4;
-  if ((entry.section || '').toLowerCase().includes(q)) score += 2;
-  const tokens = q.split(/\s+/).filter(Boolean);
-  tokens.forEach(token => {
-    if (haystack.includes(token)) score += 1;
-  });
-  if (entry.url === currentPath()) score -= 1;
-  return score;
-}
-
 function initSearch() {
   const modal = buildSearchModal();
   const input = modal.querySelector('input');
   const results = modal.querySelector('.search-results');
-  const open = () => {
+  const openSearch = () => {
     modal.classList.add('open');
     modal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
-    setTimeout(() => input.focus(), 30);
+    setTimeout(() => input.focus(), 20);
     renderResults(input.value);
   };
-  const close = () => {
+  const closeSearch = () => {
     modal.classList.remove('open');
     modal.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
   };
-
-  injectSearchButtons(open);
-
-  const renderResults = (query = '') => {
-    const entries = SEARCH_INDEX
+  const renderResults = (query='') => {
+    const matches = SEARCH_INDEX
       .map(entry => ({ entry, score: scoreEntry(entry, query) }))
       .filter(item => item.score > 0)
       .sort((a, b) => b.score - a.score)
-      .slice(0, query ? 10 : 8)
+      .slice(0, query ? 12 : 8)
       .map(item => item.entry);
-
-    if (!entries.length) {
-      results.innerHTML = '<div class="search-empty">No pages matched that search yet. Try Montessori, admissions, families, campus, or parent guide.</div>';
+    if (!matches.length) {
+      results.innerHTML = '<div class="search-empty">No results yet for that search. Try Montessori, admissions, programs, campus, or contact.</div>';
       return;
     }
-
-    results.innerHTML = entries.map(entry => `
+    results.innerHTML = matches.map(entry => `
       <a class="search-item" href="${entry.url}">
         <div class="search-meta">
           <span class="search-chip">${entry.section || 'page'}</span>
           <span class="micro">${entry.url}</span>
         </div>
         <strong>${entry.heading || entry.title}</strong>
-        <p>${entry.description || 'Explore this section of the Saandipani website.'}</p>
+        <p>${entry.description || 'Explore this part of Saandipani International Schools.'}</p>
       </a>
     `).join('');
   };
-
-  modal.querySelector('.search-backdrop').addEventListener('click', close);
-  modal.querySelector('.search-close').addEventListener('click', close);
-  input.addEventListener('input', () => renderResults(input.value));
-  modal.addEventListener('click', event => {
-    const item = event.target.closest('.search-item');
-    if (item) close();
+  document.querySelectorAll('[data-open-search]').forEach(btn => {
+    btn.addEventListener('click', openSearch);
   });
-
-  window.addEventListener('keydown', event => {
-    const isMeta = event.key.toLowerCase() === 'k' && (event.metaKey || event.ctrlKey);
-    const isSlash = event.key === '/' && !['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName);
-    if (isMeta || isSlash) {
+  document.addEventListener('click', event => {
+    const trigger = event.target.closest('[data-open-search]');
+    if (trigger) {
       event.preventDefault();
-      open();
+      openSearch();
     }
-    if (event.key === 'Escape' && modal.classList.contains('open')) close();
   });
-}
-
-function collectGraphData() {
-  const current = {
-    id: currentPath(),
-    url: currentPath(),
-    label: (document.querySelector('h1')?.textContent || document.title || 'Saandipani').trim().replace(/\s+/g, ' '),
-    section: document.body.dataset.section || 'home',
-    current: true
-  };
-
-  const map = new Map([[current.id, current]]);
-  const selectors = [
-    '.breadcrumbs a[href^="/"]',
-    '.hero-actions a[href^="/"]',
-    '.section-nav a[href^="/"]',
-    '.related-links a[href^="/"]',
-    '.desktop-nav a[href^="/"]',
-    '.band a[href^="/"]',
-    '.footer-col a[href^="/"]'
-  ];
-
-  for (const selector of selectors) {
-    document.querySelectorAll(selector).forEach(anchor => {
-      const url = normalizeInternalHref(anchor.getAttribute('href'));
-      if (!url || map.has(url) || map.size >= 11) return;
-      const label = (anchor.querySelector('strong')?.textContent || anchor.textContent || '')
-        .trim()
-        .replace(/\s+/g, ' ')
-        .slice(0, 32);
-      if (!label) return;
-      const section = url.split('/').filter(Boolean)[0] || 'home';
-      map.set(url, { id: url, url, label, section, current: false });
-    });
-    if (map.size >= 11) break;
-  }
-
-  DEFAULT_PAGES.forEach(entry => {
-    if (map.size >= 11) return;
-    if (!map.has(entry.url)) map.set(entry.url, { id: entry.url, url: entry.url, label: entry.title, section: entry.section, current: false });
+  modal.querySelector('.search-close').addEventListener('click', closeSearch);
+  modal.querySelector('.search-backdrop').addEventListener('click', closeSearch);
+  modal.addEventListener('click', event => {
+    if (event.target.closest('.search-item')) closeSearch();
   });
-
-  const nodes = Array.from(map.values());
-  const links = [];
-  nodes.filter(node => !node.current).forEach(node => {
-    links.push({ source: current.id, target: node.id, strength: 0.028 });
-  });
-
-  const breadcrumbLinks = Array.from(document.querySelectorAll('.breadcrumbs a[href^="/"]'))
-    .map(a => normalizeInternalHref(a.getAttribute('href')))
-    .filter(Boolean);
-  breadcrumbLinks.forEach((url, index) => {
-    if (breadcrumbLinks[index + 1]) links.push({ source: url, target: breadcrumbLinks[index + 1], strength: 0.035 });
-  });
-
-  const sectionRoot = nodes.find(node => !node.current && node.section === current.section);
-  if (sectionRoot) {
-    nodes.forEach(node => {
-      if (!node.current && node.id !== sectionRoot.id && node.section === current.section) {
-        links.push({ source: sectionRoot.id, target: node.id, strength: 0.02 });
-      }
-    });
-  }
-
-  return { nodes, links };
-}
-
-function simulateGraph(nodes, links, width, height) {
-  const centerX = width / 2;
-  const centerY = height / 2;
-  const padding = 24;
-
-  nodes.forEach((node, index) => {
-    const ring = node.current ? 0 : 1 + (index % 2);
-    const angle = (Math.PI * 2 * index) / Math.max(1, nodes.length - 1);
-    node.x = node.current ? centerX : centerX + Math.cos(angle) * (ring === 1 ? width * 0.26 : width * 0.36);
-    node.y = node.current ? centerY : centerY + Math.sin(angle) * (ring === 1 ? height * 0.22 : height * 0.32);
-    node.vx = 0;
-    node.vy = 0;
-    node.r = node.current ? 20 : 12;
-    node.fixed = node.current;
-  });
-
-  const byId = new Map(nodes.map(node => [node.id, node]));
-
-  for (let step = 0; step < 260; step += 1) {
-    for (let i = 0; i < nodes.length; i += 1) {
-      const a = nodes[i];
-      for (let j = i + 1; j < nodes.length; j += 1) {
-        const b = nodes[j];
-        let dx = b.x - a.x;
-        let dy = b.y - a.y;
-        let dist = Math.sqrt(dx * dx + dy * dy) || 1;
-        const minDist = (a.r + b.r) * 3.8;
-        const force = Math.min(55, (minDist * minDist) / dist) * 0.00075;
-        dx /= dist;
-        dy /= dist;
-        if (!a.fixed) {
-          a.vx -= dx * force;
-          a.vy -= dy * force;
-        }
-        if (!b.fixed) {
-          b.vx += dx * force;
-          b.vy += dy * force;
-        }
-      }
+  input.addEventListener('input', () => renderResults(input.value));
+  window.addEventListener('keydown', event => {
+    const openKey = event.key.toLowerCase() === 'k' && (event.metaKey || event.ctrlKey);
+    const slash = event.key === '/' && !['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName);
+    if (openKey || slash) {
+      event.preventDefault();
+      openSearch();
     }
-
-    links.forEach(link => {
-      const a = byId.get(link.source);
-      const b = byId.get(link.target);
-      if (!a || !b) return;
-      let dx = b.x - a.x;
-      let dy = b.y - a.y;
-      const dist = Math.sqrt(dx * dx + dy * dy) || 1;
-      const desired = a.current || b.current ? Math.min(width, height) * 0.28 : Math.min(width, height) * 0.22;
-      const force = (dist - desired) * (link.strength || 0.02);
-      dx /= dist;
-      dy /= dist;
-      if (!a.fixed) {
-        a.vx += dx * force;
-        a.vy += dy * force;
-      }
-      if (!b.fixed) {
-        b.vx -= dx * force;
-        b.vy -= dy * force;
-      }
-    });
-
-    nodes.forEach(node => {
-      if (node.fixed) return;
-      node.vx += (centerX - node.x) * 0.0009;
-      node.vy += (centerY - node.y) * 0.0009;
-      node.vx *= 0.92;
-      node.vy *= 0.92;
-      node.x += node.vx;
-      node.y += node.vy;
-      node.x = Math.max(padding, Math.min(width - padding, node.x));
-      node.y = Math.max(padding, Math.min(height - padding, node.y));
-    });
-  }
-
-  return { nodes, links };
-}
-
-function shortLabel(label) {
-  if (label.length <= 18) return label;
-  return `${label.slice(0, 16)}…`;
-}
-
-function renderConstellation(card, graph) {
-  const stage = card.querySelector('.constellation-stage');
-  if (!stage) return;
-
-  const width = Math.max(320, stage.clientWidth || 360);
-  const height = Math.max(280, stage.clientHeight || 300);
-  const simulated = simulateGraph(
-    graph.nodes.map(node => ({ ...node })),
-    graph.links.map(link => ({ ...link })),
-    width,
-    height
-  );
-
-  const ns = 'http://www.w3.org/2000/svg';
-  const svg = document.createElementNS(ns, 'svg');
-  svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
-  svg.setAttribute('role', 'img');
-  svg.setAttribute('aria-label', 'Connected Saandipani journey map');
-
-  simulated.links.forEach(link => {
-    const source = simulated.nodes.find(node => node.id === link.source);
-    const target = simulated.nodes.find(node => node.id === link.target);
-    if (!source || !target) return;
-    const line = document.createElementNS(ns, 'line');
-    line.setAttribute('x1', source.x);
-    line.setAttribute('y1', source.y);
-    line.setAttribute('x2', target.x);
-    line.setAttribute('y2', target.y);
-    line.setAttribute('class', 'constellation-link');
-    svg.appendChild(line);
+    if (event.key === 'Escape' && modal.classList.contains('open')) closeSearch();
   });
-
-  simulated.nodes.forEach(node => {
-    const group = document.createElementNS(ns, 'a');
-    group.setAttributeNS('http://www.w3.org/1999/xlink', 'href', node.url);
-    group.setAttribute('class', `constellation-node${node.current ? ' current' : ''}`);
-    group.setAttribute('aria-label', node.label);
-
-    const circle = document.createElementNS(ns, 'circle');
-    circle.setAttribute('cx', node.x);
-    circle.setAttribute('cy', node.y);
-    circle.setAttribute('r', node.r);
-    circle.setAttribute('fill', node.current ? '#0c2346' : (SECTION_COLORS[node.section] || SECTION_COLORS.misc));
-    group.appendChild(circle);
-
-    const label = document.createElementNS(ns, 'text');
-    label.setAttribute('x', node.x);
-    label.setAttribute('y', node.y + node.r + 16);
-    label.setAttribute('text-anchor', 'middle');
-    label.textContent = shortLabel(node.label);
-    group.appendChild(label);
-
-    svg.appendChild(group);
-  });
-
-  stage.innerHTML = '';
-  stage.appendChild(svg);
 }
 
-function injectConstellationCards() {
-  document.querySelectorAll('[data-enhance-graph="true"]').forEach(panel => {
-    if (panel.querySelector('.constellation-card')) return;
-    const graph = collectGraphData();
-    const currentSection = document.body.dataset.section || 'home';
-    const card = document.createElement('section');
-    card.className = 'constellation-card';
-    card.innerHTML = `
-      <div class="constellation-head">
-        <div>
-          <div class="panel-title">Connected journey</div>
-          <h3>Force-directed exploration</h3>
-          <p>Every node is a related page or next step. Click any node to continue through the Saandipani story.</p>
-        </div>
-        <button type="button" class="constellation-mini">Search pages</button>
-      </div>
-      <div class="constellation-stage"></div>
-      <div class="constellation-caption">
-        <span class="constellation-badge">${currentSection}</span>
-        <span class="constellation-badge">No orphan routes</span>
-        <span class="constellation-badge">Deep-link ready</span>
-      </div>
-    `;
-    panel.appendChild(card);
-    card.querySelector('.constellation-mini').addEventListener('click', () => {
-      document.querySelector('.nav-search')?.click();
+function initFaq() {
+  document.querySelectorAll('.faq-item button').forEach(button => {
+    button.addEventListener('click', () => {
+      const item = button.closest('.faq-item');
+      const open = item.classList.contains('open');
+      item.classList.toggle('open', !open);
+      button.setAttribute('aria-expanded', !open ? 'true' : 'false');
+      const mark = button.querySelector('.mark');
+      if (mark) mark.textContent = !open ? '–' : '+';
     });
-    renderConstellation(card, graph);
   });
 }
 
 function initReveal() {
-  const targets = document.querySelectorAll('.hero-card, .surface, .card, .band, .quote-strip, .story-row, .contact-item, .faq-item, .constellation-card');
+  const targets = document.querySelectorAll('.hero-shell, .signature-card, .split-panel, .directory-card, .faq-item, .link-card, .force-card, .sitemap-group, .gallery-note');
   if (!('IntersectionObserver' in window)) {
     targets.forEach(el => el.classList.add('in-view'));
     return;
   }
-  const observer = new IntersectionObserver((entries) => {
+  const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('in-view');
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
-
+  }, { threshold: 0.12, rootMargin: '0px 0px -80px 0px' });
   targets.forEach(el => {
     el.setAttribute('data-reveal', '');
     observer.observe(el);
   });
+}
+
+function initTooltips() {
+  const tooltip = document.createElement('div');
+  tooltip.className = 'tooltip';
+  document.body.appendChild(tooltip);
+  let active = null;
+  const show = (event) => {
+    const target = event.currentTarget;
+    const text = target.getAttribute('data-tip');
+    if (!text) return;
+    active = target;
+    tooltip.textContent = text;
+    tooltip.classList.add('show');
+    position();
+  };
+  const hide = () => {
+    active = null;
+    tooltip.classList.remove('show');
+  };
+  const position = () => {
+    if (!active) return;
+    const rect = active.getBoundingClientRect();
+    const ttRect = tooltip.getBoundingClientRect();
+    const top = Math.max(12, rect.top - ttRect.height - 10);
+    let left = rect.left + rect.width / 2 - ttRect.width / 2;
+    left = Math.max(12, Math.min(window.innerWidth - ttRect.width - 12, left));
+    tooltip.style.top = `${top}px`;
+    tooltip.style.left = `${left}px`;
+  };
+  document.querySelectorAll('[data-tip]').forEach(target => {
+    target.addEventListener('mouseenter', show);
+    target.addEventListener('mouseleave', hide);
+    target.addEventListener('focus', show);
+    target.addEventListener('blur', hide);
+  });
+  window.addEventListener('scroll', position, { passive: true });
+  window.addEventListener('resize', position);
 }
 
 function injectFloatingDock() {
@@ -504,23 +284,236 @@ function injectFloatingDock() {
   const dock = document.createElement('div');
   dock.className = 'floating-dock';
   dock.innerHTML = `
-    <a class="dock-primary" href="/admissions/enquiry/">Enquire now</a>
-    <button class="dock-secondary" type="button">Search</button>
+    <a href="/admissions/enquiry/" class="dock-primary" data-tip="Open the admissions enquiry form">Enquire now</a>
+    <button type="button" class="dock-secondary" data-open-search data-tip="Search the school website">Search</button>
   `;
-  dock.querySelector('button').addEventListener('click', () => {
-    document.querySelector('.nav-search')?.click();
-  });
   document.body.appendChild(dock);
 }
 
+function injectNavTip() {
+  const key = 'saandipani-nav-tip-v3-dismissed';
+  if (window.localStorage.getItem(key) === 'yes') return;
+  const tip = document.createElement('aside');
+  tip.className = 'nav-tip';
+  tip.innerHTML = `
+    <button class="tip-close" aria-label="Close tip">×</button>
+    <strong>Navigation tip</strong>
+    <p>Use the page guide below the hero, or press <strong>/</strong> to search instantly across Montessori, programs, admissions, campus, and contact.</p>
+    <div class="nav-tip-actions">
+      <button type="button" class="tip-chip" data-open-search>Search</button>
+      <a href="/sitemap/" class="tip-chip">Sitemap</a>
+    </div>
+  `;
+  document.body.appendChild(tip);
+  tip.querySelector('.tip-close').addEventListener('click', () => {
+    window.localStorage.setItem(key, 'yes');
+    tip.remove();
+  });
+}
+
+function shortLabel(label) {
+  if (label.length <= 18) return label;
+  return `${label.slice(0, 16)}…`;
+}
+
+function collectNodes(element) {
+  const current = currentPath();
+  const related = (element.getAttribute('data-related') || '')
+    .split(',')
+    .map(item => item.trim())
+    .filter(Boolean);
+  const rootPages = ['/', '/about/', '/montessori/', '/programs/', '/admissions/', '/campus/', '/families/', '/journal/', '/contact/'];
+  const wanted = Array.from(new Set([current, ...related, ...rootPages])).slice(0, 12);
+  return wanted
+    .map(url => SEARCH_INDEX.find(entry => entry.url === url) || { url, title: url === '/' ? 'Home' : url.replaceAll('/', ' ').trim(), heading: '', section: (url.split('/').filter(Boolean)[0] || 'home') })
+    .map(entry => ({
+      id: entry.url,
+      url: entry.url,
+      label: (entry.heading || entry.title || 'Saandipani').replace(/\s+/g, ' ').trim(),
+      section: entry.section || 'misc',
+      current: entry.url === current,
+      x: 0, y: 0, vx: 0, vy: 0, radius: entry.url === current ? 16 : 11
+    }));
+}
+
+function buildLinks(nodes) {
+  const current = nodes.find(node => node.current);
+  const links = [];
+  if (current) {
+    nodes.forEach(node => {
+      if (node.id !== current.id) links.push({ source: current.id, target: node.id, strength: 0.025 });
+    });
+  }
+  const bySection = {};
+  nodes.forEach(node => {
+    bySection[node.section] = bySection[node.section] || [];
+    bySection[node.section].push(node);
+  });
+  Object.values(bySection).forEach(group => {
+    for (let i = 0; i < group.length - 1; i += 1) {
+      links.push({ source: group[i].id, target: group[i + 1].id, strength: 0.016 });
+    }
+  });
+  return links;
+}
+
+function initForceMaps() {
+  document.querySelectorAll('[data-force-map]').forEach(stage => {
+    const canvas = document.createElement('canvas');
+    stage.appendChild(canvas);
+    const ctx = canvas.getContext('2d');
+    let dpr = Math.max(1, window.devicePixelRatio || 1);
+    let width = 0;
+    let height = 0;
+    let hoverNode = null;
+    const nodes = collectNodes(stage);
+    const links = buildLinks(nodes);
+    const index = new Map(nodes.map(node => [node.id, node]));
+
+    function resize() {
+      const rect = stage.getBoundingClientRect();
+      width = Math.max(320, Math.floor(rect.width));
+      height = Math.max(260, Math.floor(rect.height));
+      dpr = Math.max(1, window.devicePixelRatio || 1);
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      canvas.style.width = width + 'px';
+      canvas.style.height = height + 'px';
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      seed();
+    }
+
+    function seed() {
+      const centerX = width / 2;
+      const centerY = height / 2;
+      nodes.forEach((node, i) => {
+        const ring = node.current ? 0 : 1 + (i % 2);
+        const angle = (Math.PI * 2 * i) / Math.max(1, nodes.length - 1);
+        node.x = node.current ? centerX : centerX + Math.cos(angle) * (ring === 1 ? width * 0.22 : width * 0.32);
+        node.y = node.current ? centerY : centerY + Math.sin(angle) * (ring === 1 ? height * 0.18 : height * 0.28);
+        node.vx = 0;
+        node.vy = 0;
+      });
+    }
+
+    function physics() {
+      const centerX = width / 2;
+      const centerY = height / 2;
+      for (let i = 0; i < nodes.length; i += 1) {
+        const a = nodes[i];
+        for (let j = i + 1; j < nodes.length; j += 1) {
+          const b = nodes[j];
+          let dx = b.x - a.x;
+          let dy = b.y - a.y;
+          let dist = Math.sqrt(dx * dx + dy * dy) || 1;
+          const minDist = (a.radius + b.radius) * 4.2;
+          const repel = (minDist * minDist) / dist * 0.00045;
+          dx /= dist; dy /= dist;
+          if (!a.current) { a.vx -= dx * repel; a.vy -= dy * repel; }
+          if (!b.current) { b.vx += dx * repel; b.vy += dy * repel; }
+        }
+      }
+      links.forEach(link => {
+        const a = index.get(link.source);
+        const b = index.get(link.target);
+        if (!a || !b) return;
+        let dx = b.x - a.x;
+        let dy = b.y - a.y;
+        const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+        const ideal = a.current || b.current ? Math.min(width, height) * 0.28 : Math.min(width, height) * 0.22;
+        const force = (dist - ideal) * (link.strength || 0.02);
+        dx /= dist; dy /= dist;
+        if (!a.current) { a.vx += dx * force; a.vy += dy * force; }
+        if (!b.current) { b.vx -= dx * force; b.vy -= dy * force; }
+      });
+      nodes.forEach(node => {
+        if (node.current) return;
+        node.vx += (centerX - node.x) * 0.00035;
+        node.vy += (centerY - node.y) * 0.00035;
+        node.vx *= 0.93;
+        node.vy *= 0.93;
+        node.x += node.vx;
+        node.y += node.vy;
+        node.x = Math.max(24, Math.min(width - 24, node.x));
+        node.y = Math.max(24, Math.min(height - 24, node.y));
+      });
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, width, height);
+      ctx.save();
+      ctx.lineWidth = 1;
+      links.forEach(link => {
+        const a = index.get(link.source);
+        const b = index.get(link.target);
+        if (!a || !b) return;
+        const gradient = ctx.createLinearGradient(a.x, a.y, b.x, b.y);
+        gradient.addColorStop(0, (SECTION_COLORS[a.section] || SECTION_COLORS.misc) + '66');
+        gradient.addColorStop(1, (SECTION_COLORS[b.section] || SECTION_COLORS.misc) + '33');
+        ctx.strokeStyle = gradient;
+        ctx.beginPath();
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(b.x, b.y);
+        ctx.stroke();
+      });
+      nodes.forEach(node => {
+        ctx.beginPath();
+        ctx.fillStyle = node.current ? '#0c2346' : (SECTION_COLORS[node.section] || SECTION_COLORS.misc);
+        ctx.shadowBlur = hoverNode === node ? 18 : 10;
+        ctx.shadowColor = 'rgba(12,35,70,.18)';
+        ctx.arc(node.x, node.y, hoverNode === node ? node.radius + 1.2 : node.radius, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.shadowBlur = 0;
+        ctx.fillStyle = '#24324f';
+        ctx.font = `600 ${node.current ? 13 : 12}px Inter, sans-serif`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'top';
+        ctx.fillText(shortLabel(node.label), node.x, node.y + node.radius + 12);
+      });
+      ctx.restore();
+    }
+
+    function frame() {
+      physics();
+      draw();
+      requestAnimationFrame(frame);
+    }
+
+    function locate(event) {
+      const rect = canvas.getBoundingClientRect();
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
+      hoverNode = nodes.find(node => Math.hypot(node.x - x, node.y - y) <= node.radius + 8) || null;
+      canvas.style.cursor = hoverNode ? 'pointer' : 'default';
+    }
+
+    canvas.addEventListener('mousemove', locate);
+    canvas.addEventListener('mouseleave', () => {
+      hoverNode = null;
+      canvas.style.cursor = 'default';
+    });
+    canvas.addEventListener('click', event => {
+      locate(event);
+      if (hoverNode) window.location.href = hoverNode.url;
+    });
+
+    resize();
+    window.addEventListener('resize', resize);
+    requestAnimationFrame(frame);
+  });
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
-  setBodyRouteData();
+  setRouteData();
+  setActiveNav();
   initMenu();
-  initScrollStates();
-  initFaq();
+  initScrollProgress();
   await loadSearchIndex();
-  initSearch();
-  injectConstellationCards();
   injectFloatingDock();
+  injectNavTip();
+  initSearch();
+  initFaq();
   initReveal();
+  initTooltips();
+  initForceMaps();
 });
