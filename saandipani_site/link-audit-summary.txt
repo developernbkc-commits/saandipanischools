@@ -1,0 +1,5 @@
+Public pages audited: 26
+Orphan public pages: 0
+Minimum inbound references to any public page: 7
+Minimum unique source pages linking to any public page: 5
+Five-layer path retained: /montessori/foundations/prepared-environment/classroom-flow/parent-guide/

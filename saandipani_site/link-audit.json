@@ -1,0 +1,494 @@
+[
+  {
+    "url": "/",
+    "inbound_total": 53,
+    "inbound_unique_sources": 26,
+    "outbound_total": 41,
+    "orphan": false,
+    "sample_sources": [
+      "/",
+      "/about/",
+      "/about/governance/",
+      "/about/leadership/",
+      "/about/vision/",
+      "/admissions/",
+      "/admissions/enquiry/",
+      "/admissions/how-to-apply/",
+      "/campus/",
+      "/campus/poranki/",
+      "/contact/",
+      "/families/"
+    ]
+  },
+  {
+    "url": "/about/",
+    "inbound_total": 87,
+    "inbound_unique_sources": 26,
+    "outbound_total": 43,
+    "orphan": false,
+    "sample_sources": [
+      "/",
+      "/about/",
+      "/about/governance/",
+      "/about/leadership/",
+      "/about/vision/",
+      "/admissions/",
+      "/admissions/enquiry/",
+      "/admissions/how-to-apply/",
+      "/campus/",
+      "/campus/poranki/",
+      "/contact/",
+      "/families/"
+    ]
+  },
+  {
+    "url": "/about/governance/",
+    "inbound_total": 7,
+    "inbound_unique_sources": 5,
+    "outbound_total": 44,
+    "orphan": false,
+    "sample_sources": [
+      "/about/",
+      "/about/governance/",
+      "/about/leadership/",
+      "/about/vision/",
+      "/sitemap/"
+    ]
+  },
+  {
+    "url": "/about/leadership/",
+    "inbound_total": 7,
+    "inbound_unique_sources": 5,
+    "outbound_total": 44,
+    "orphan": false,
+    "sample_sources": [
+      "/about/",
+      "/about/governance/",
+      "/about/leadership/",
+      "/about/vision/",
+      "/sitemap/"
+    ]
+  },
+  {
+    "url": "/about/vision/",
+    "inbound_total": 7,
+    "inbound_unique_sources": 5,
+    "outbound_total": 44,
+    "orphan": false,
+    "sample_sources": [
+      "/about/",
+      "/about/governance/",
+      "/about/leadership/",
+      "/about/vision/",
+      "/sitemap/"
+    ]
+  },
+  {
+    "url": "/admissions/",
+    "inbound_total": 88,
+    "inbound_unique_sources": 26,
+    "outbound_total": 41,
+    "orphan": false,
+    "sample_sources": [
+      "/",
+      "/about/",
+      "/about/governance/",
+      "/about/leadership/",
+      "/about/vision/",
+      "/admissions/",
+      "/admissions/enquiry/",
+      "/admissions/how-to-apply/",
+      "/campus/",
+      "/campus/poranki/",
+      "/contact/",
+      "/families/"
+    ]
+  },
+  {
+    "url": "/admissions/enquiry/",
+    "inbound_total": 161,
+    "inbound_unique_sources": 26,
+    "outbound_total": 40,
+    "orphan": false,
+    "sample_sources": [
+      "/",
+      "/about/",
+      "/about/governance/",
+      "/about/leadership/",
+      "/about/vision/",
+      "/admissions/",
+      "/admissions/enquiry/",
+      "/admissions/how-to-apply/",
+      "/campus/",
+      "/campus/poranki/",
+      "/contact/",
+      "/families/"
+    ]
+  },
+  {
+    "url": "/admissions/how-to-apply/",
+    "inbound_total": 9,
+    "inbound_unique_sources": 6,
+    "outbound_total": 42,
+    "orphan": false,
+    "sample_sources": [
+      "/admissions/",
+      "/admissions/enquiry/",
+      "/admissions/how-to-apply/",
+      "/families/faq/",
+      "/programs/foundational-years/",
+      "/sitemap/"
+    ]
+  },
+  {
+    "url": "/campus/",
+    "inbound_total": 56,
+    "inbound_unique_sources": 26,
+    "outbound_total": 41,
+    "orphan": false,
+    "sample_sources": [
+      "/",
+      "/about/",
+      "/about/governance/",
+      "/about/leadership/",
+      "/about/vision/",
+      "/admissions/",
+      "/admissions/enquiry/",
+      "/admissions/how-to-apply/",
+      "/campus/",
+      "/campus/poranki/",
+      "/contact/",
+      "/families/"
+    ]
+  },
+  {
+    "url": "/campus/poranki/",
+    "inbound_total": 34,
+    "inbound_unique_sources": 26,
+    "outbound_total": 42,
+    "orphan": false,
+    "sample_sources": [
+      "/",
+      "/about/",
+      "/about/governance/",
+      "/about/leadership/",
+      "/about/vision/",
+      "/admissions/",
+      "/admissions/enquiry/",
+      "/admissions/how-to-apply/",
+      "/campus/",
+      "/campus/poranki/",
+      "/contact/",
+      "/families/"
+    ]
+  },
+  {
+    "url": "/contact/",
+    "inbound_total": 90,
+    "inbound_unique_sources": 26,
+    "outbound_total": 37,
+    "orphan": false,
+    "sample_sources": [
+      "/",
+      "/about/",
+      "/about/governance/",
+      "/about/leadership/",
+      "/about/vision/",
+      "/admissions/",
+      "/admissions/enquiry/",
+      "/admissions/how-to-apply/",
+      "/campus/",
+      "/campus/poranki/",
+      "/contact/",
+      "/families/"
+    ]
+  },
+  {
+    "url": "/families/",
+    "inbound_total": 59,
+    "inbound_unique_sources": 26,
+    "outbound_total": 41,
+    "orphan": false,
+    "sample_sources": [
+      "/",
+      "/about/",
+      "/about/governance/",
+      "/about/leadership/",
+      "/about/vision/",
+      "/admissions/",
+      "/admissions/enquiry/",
+      "/admissions/how-to-apply/",
+      "/campus/",
+      "/campus/poranki/",
+      "/contact/",
+      "/families/"
+    ]
+  },
+  {
+    "url": "/families/faq/",
+    "inbound_total": 34,
+    "inbound_unique_sources": 26,
+    "outbound_total": 43,
+    "orphan": false,
+    "sample_sources": [
+      "/",
+      "/about/",
+      "/about/governance/",
+      "/about/leadership/",
+      "/about/vision/",
+      "/admissions/",
+      "/admissions/enquiry/",
+      "/admissions/how-to-apply/",
+      "/campus/",
+      "/campus/poranki/",
+      "/contact/",
+      "/families/"
+    ]
+  },
+  {
+    "url": "/journal/",
+    "inbound_total": 56,
+    "inbound_unique_sources": 26,
+    "outbound_total": 41,
+    "orphan": false,
+    "sample_sources": [
+      "/",
+      "/about/",
+      "/about/governance/",
+      "/about/leadership/",
+      "/about/vision/",
+      "/admissions/",
+      "/admissions/enquiry/",
+      "/admissions/how-to-apply/",
+      "/campus/",
+      "/campus/poranki/",
+      "/contact/",
+      "/families/"
+    ]
+  },
+  {
+    "url": "/journal/montessori-at-home/",
+    "inbound_total": 31,
+    "inbound_unique_sources": 26,
+    "outbound_total": 42,
+    "orphan": false,
+    "sample_sources": [
+      "/",
+      "/about/",
+      "/about/governance/",
+      "/about/leadership/",
+      "/about/vision/",
+      "/admissions/",
+      "/admissions/enquiry/",
+      "/admissions/how-to-apply/",
+      "/campus/",
+      "/campus/poranki/",
+      "/contact/",
+      "/families/"
+    ]
+  },
+  {
+    "url": "/montessori/",
+    "inbound_total": 113,
+    "inbound_unique_sources": 26,
+    "outbound_total": 45,
+    "orphan": false,
+    "sample_sources": [
+      "/",
+      "/about/",
+      "/about/governance/",
+      "/about/leadership/",
+      "/about/vision/",
+      "/admissions/",
+      "/admissions/enquiry/",
+      "/admissions/how-to-apply/",
+      "/campus/",
+      "/campus/poranki/",
+      "/contact/",
+      "/families/"
+    ]
+  },
+  {
+    "url": "/montessori/foundations/",
+    "inbound_total": 15,
+    "inbound_unique_sources": 9,
+    "outbound_total": 46,
+    "orphan": false,
+    "sample_sources": [
+      "/montessori/",
+      "/montessori/foundations/",
+      "/montessori/foundations/practical-life/",
+      "/montessori/foundations/prepared-environment/",
+      "/montessori/foundations/prepared-environment/classroom-flow/",
+      "/montessori/foundations/prepared-environment/classroom-flow/parent-guide/",
+      "/montessori/why-montessori/",
+      "/programs/",
+      "/sitemap/"
+    ]
+  },
+  {
+    "url": "/montessori/foundations/practical-life/",
+    "inbound_total": 11,
+    "inbound_unique_sources": 9,
+    "outbound_total": 47,
+    "orphan": false,
+    "sample_sources": [
+      "/journal/montessori-at-home/",
+      "/montessori/",
+      "/montessori/foundations/",
+      "/montessori/foundations/practical-life/",
+      "/montessori/foundations/prepared-environment/",
+      "/montessori/foundations/prepared-environment/classroom-flow/",
+      "/montessori/foundations/prepared-environment/classroom-flow/parent-guide/",
+      "/montessori/why-montessori/",
+      "/sitemap/"
+    ]
+  },
+  {
+    "url": "/montessori/foundations/prepared-environment/",
+    "inbound_total": 14,
+    "inbound_unique_sources": 9,
+    "outbound_total": 47,
+    "orphan": false,
+    "sample_sources": [
+      "/montessori/",
+      "/montessori/foundations/",
+      "/montessori/foundations/practical-life/",
+      "/montessori/foundations/prepared-environment/",
+      "/montessori/foundations/prepared-environment/classroom-flow/",
+      "/montessori/foundations/prepared-environment/classroom-flow/parent-guide/",
+      "/montessori/why-montessori/",
+      "/programs/foundational-years/ages-3-6/",
+      "/sitemap/"
+    ]
+  },
+  {
+    "url": "/montessori/foundations/prepared-environment/classroom-flow/",
+    "inbound_total": 11,
+    "inbound_unique_sources": 8,
+    "outbound_total": 48,
+    "orphan": false,
+    "sample_sources": [
+      "/montessori/",
+      "/montessori/foundations/",
+      "/montessori/foundations/practical-life/",
+      "/montessori/foundations/prepared-environment/",
+      "/montessori/foundations/prepared-environment/classroom-flow/",
+      "/montessori/foundations/prepared-environment/classroom-flow/parent-guide/",
+      "/montessori/why-montessori/",
+      "/sitemap/"
+    ]
+  },
+  {
+    "url": "/montessori/foundations/prepared-environment/classroom-flow/parent-guide/",
+    "inbound_total": 14,
+    "inbound_unique_sources": 10,
+    "outbound_total": 49,
+    "orphan": false,
+    "sample_sources": [
+      "/",
+      "/montessori/",
+      "/montessori/foundations/",
+      "/montessori/foundations/practical-life/",
+      "/montessori/foundations/prepared-environment/",
+      "/montessori/foundations/prepared-environment/classroom-flow/",
+      "/montessori/foundations/prepared-environment/classroom-flow/parent-guide/",
+      "/montessori/why-montessori/",
+      "/programs/foundational-years/",
+      "/sitemap/"
+    ]
+  },
+  {
+    "url": "/montessori/why-montessori/",
+    "inbound_total": 14,
+    "inbound_unique_sources": 10,
+    "outbound_total": 46,
+    "orphan": false,
+    "sample_sources": [
+      "/admissions/enquiry/",
+      "/families/faq/",
+      "/montessori/",
+      "/montessori/foundations/",
+      "/montessori/foundations/practical-life/",
+      "/montessori/foundations/prepared-environment/",
+      "/montessori/foundations/prepared-environment/classroom-flow/",
+      "/montessori/foundations/prepared-environment/classroom-flow/parent-guide/",
+      "/montessori/why-montessori/",
+      "/sitemap/"
+    ]
+  },
+  {
+    "url": "/programs/",
+    "inbound_total": 85,
+    "inbound_unique_sources": 26,
+    "outbound_total": 42,
+    "orphan": false,
+    "sample_sources": [
+      "/",
+      "/about/",
+      "/about/governance/",
+      "/about/leadership/",
+      "/about/vision/",
+      "/admissions/",
+      "/admissions/enquiry/",
+      "/admissions/how-to-apply/",
+      "/campus/",
+      "/campus/poranki/",
+      "/contact/",
+      "/families/"
+    ]
+  },
+  {
+    "url": "/programs/foundational-years/",
+    "inbound_total": 8,
+    "inbound_unique_sources": 6,
+    "outbound_total": 43,
+    "orphan": false,
+    "sample_sources": [
+      "/",
+      "/campus/",
+      "/programs/",
+      "/programs/foundational-years/",
+      "/programs/foundational-years/ages-3-6/",
+      "/sitemap/"
+    ]
+  },
+  {
+    "url": "/programs/foundational-years/ages-3-6/",
+    "inbound_total": 10,
+    "inbound_unique_sources": 8,
+    "outbound_total": 44,
+    "orphan": false,
+    "sample_sources": [
+      "/admissions/how-to-apply/",
+      "/contact/",
+      "/montessori/foundations/prepared-environment/",
+      "/montessori/why-montessori/",
+      "/programs/",
+      "/programs/foundational-years/",
+      "/programs/foundational-years/ages-3-6/",
+      "/sitemap/"
+    ]
+  },
+  {
+    "url": "/sitemap/",
+    "inbound_total": 71,
+    "inbound_unique_sources": 26,
+    "outbound_total": 62,
+    "orphan": false,
+    "sample_sources": [
+      "/",
+      "/about/",
+      "/about/governance/",
+      "/about/leadership/",
+      "/about/vision/",
+      "/admissions/",
+      "/admissions/enquiry/",
+      "/admissions/how-to-apply/",
+      "/campus/",
+      "/campus/poranki/",
+      "/contact/",
+      "/families/"
+    ]
+  }
+]
