@@ -1,4 +1,0 @@
-Public pages audited: 26
-Minimum total internal references per public page: 7
-Minimum unique source pages per public page: 5
-Least referenced public pages: /about/governance/, /about/leadership/, /about/vision/
